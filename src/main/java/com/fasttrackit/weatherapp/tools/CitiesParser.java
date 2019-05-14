@@ -17,11 +17,11 @@ public class CitiesParser {
 	 * represents the maximum number of entries used per query when inserting or
 	 * updating.
 	 */
-	public static final int MAXCITIES_CREATE_UPDATE = 25;
+	public static final int MAXCITIES_CREATE_UPDATE = 100;
 
 	/**
 	 * Used for tests in order to limit the number of entries to parse.</br>
-	 * Set to 0 to parse all cities in 
+	 * Set to 0 to parse all cities
 	 */
 	public final int MAXCITIES_TO_PARSE = 89;
 
@@ -75,25 +75,39 @@ public class CitiesParser {
 		JsonArray emptyJsonArray = Json.createArrayBuilder().build();
 
 		// api_id
-		createCityRequest.setWww_api_id(Long.parseLong(cityJson.get("id").toString()));
+		createCityRequest.setWwwapiid(string2long(cityJson.get("id").toString()));
 		// api_parent_id
-		createCityRequest.setApi_parent_id(Long.parseLong(cityJson.getJsonObject("geoname").get("parent").toString()));
+		createCityRequest.setApi_parent_id(string2long(cityJson.getJsonObject("geoname").get("parent").toString()));
 		// city_name
 		createCityRequest.setCity_name(cityJson.getString("name"));
 		// city_name_translations
 		createCityRequest.setCity_name_translations(cityJson.getOrDefault("langs", emptyJsonArray).asJsonArray().toString());
-		// country_code
-		createCityRequest.setCountry_code(cityJson.getString("country"));
+		// countrycode
+		createCityRequest.setCountrycode(cityJson.getString("country"));
 		// geo_latitude
 		createCityRequest.setGeo_latitude(Float.parseFloat(cityJson.getJsonObject("coord").get("lat").toString()));
 		// geo_longitude
 		createCityRequest.setGeo_longitude(Float.parseFloat(cityJson.getJsonObject("coord").get("lon").toString()));
 		// population
-		createCityRequest.setPopulation(Long.parseLong(cityJson.getJsonObject("stat").get("population").toString()));
+		createCityRequest.setPopulation(string2long(cityJson.getJsonObject("stat").get("population").toString()));
 		// stations_count
 		createCityRequest.setStations_count(cityJson.getOrDefault("stations", emptyJsonArray).asJsonArray().size());
 
 		return createCityRequest;
+	}
+	
+	private long string2long(String input) {
+		long result = -1L;
+		try {
+			result = Long.parseLong(input);
+		} catch (NumberFormatException  e) {
+			try {
+				result = Math.round(Float.parseFloat(input));
+			} catch (NumberFormatException e2) {
+				result = -1L;
+			}
+		}
+		return result;
 	}
 
 	public void loadCitiesJSON() throws SecurityException, IOException {

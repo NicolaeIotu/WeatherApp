@@ -2,12 +2,11 @@ package com.fasttrackit.weatherapp;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.not;
+import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.hamcrest.MatcherAssert.assertThat;
 
 import java.io.IOException;
 import java.util.Random;
-
-import javax.validation.constraints.NotNull;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -17,7 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.fasttrackit.weatherapp.domain.City;
+import com.fasttrackit.weatherapp.domain.city.City;
 import com.fasttrackit.weatherapp.service.CityService;
 import com.fasttrackit.weatherapp.tools.CitiesParser;
 import com.fasttrackit.weatherapp.transfer.city.CreateCityRequest;
@@ -36,9 +35,9 @@ public class CityRelatedTests {
 		LOGGER.info("Adding city.");
 		
 		CreateCityRequest ccr = new CreateCityRequest();
-		ccr.setWww_api_id((long) (Math.random() * 100000));
+		ccr.setWwwapiid((long) (Math.random() * 100000));
 		ccr.setCity_name("dsadas");
-		ccr.setCountry_code("RR");
+		ccr.setCountrycode("RR");
 		ccr.setGeo_latitude(12.34F);
 		ccr.setGeo_longitude(23.45F);		
 		
@@ -73,17 +72,17 @@ public class CityRelatedTests {
 
 		LOGGER.info("Found {} cities.", citiesCount);
 		
-		
+																																																																																						
 		assertThat(citiesCount, not(0L));
 	}
 
 	
 	@Test
 	public void testPopulateCitiesTableUsingDataFromWeatherProviderJsonFile() throws Exception {
-		
+		//TODO wait here and check regularly that the results arrived
 		long countPopulateEntries;
 		try {
-			countPopulateEntries = cityService.populateCities();
+			countPopulateEntries = cityService.populateCities(false);
 		} catch (SecurityException | IOException e) {
 			throw e;
 		}
@@ -91,5 +90,14 @@ public class CityRelatedTests {
 		long citiesCount = cityService.countCities();
 
 		assertThat(citiesCount, equalTo(countPopulateEntries));
+	}
+	
+	@Test
+	public void testCityRepositoryGetCityById() {
+		City city = cityService.getCityById(18918L);
+		System.out.println(city.toString());
+		
+		assertThat(city, notNullValue());
+		
 	}
 }

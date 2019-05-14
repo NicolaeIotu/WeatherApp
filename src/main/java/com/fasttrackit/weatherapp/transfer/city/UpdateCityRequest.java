@@ -1,7 +1,12 @@
 package com.fasttrackit.weatherapp.transfer.city;
 
-public class CreateCityRequest {
+public class UpdateCityRequest extends CreateCityRequest {
 	
+	public UpdateCityRequest() {
+		super();
+	}
+	
+	private long city_id;
 	private long wwwapiid;
 	private long api_parent_id;
 	private String city_name;
@@ -12,11 +17,13 @@ public class CreateCityRequest {
 	private long population;
 	private int stations_count;
 	
-	public CreateCityRequest() {
-
+	
+	public long getCity_id() {
+		return city_id;
 	}
-	
-	
+	public void setCity_id(long city_id) {
+		this.city_id = city_id;
+	}
 	public long getWwwapiid() {
 		return wwwapiid;
 	}
@@ -75,9 +82,12 @@ public class CreateCityRequest {
 	
 	@Override
 	public String toString() {
-		return "CreateCityRequest [wwwapiid=" + wwwapiid + ", api_parent_id=" + api_parent_id + ", city_name=" + city_name
-				+ ", city_name_translations=" + city_name_translations + ", countrycode=" + countrycode + ", geo_latitude=" + geo_latitude
-				+ ", geo_longitude=" + geo_longitude + ", population=" + population + ", stations_count=" + stations_count + "]";
+		return "UpdateCityRequest [city_id=" + city_id + ", wwwapiid=" + wwwapiid
+				+ ", api_parent_id=" + api_parent_id + ", city_name=" + city_name
+				+ ", city_name_translations=" + city_name_translations + ", countrycode="
+				+ countrycode + ", geo_latitude=" + geo_latitude + ", geo_longitude="
+				+ geo_longitude + ", population=" + population + ", stations_count="
+				+ stations_count + "]";
 	}
 	
 	

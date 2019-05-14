@@ -1,5 +1,4 @@
-package com.fasttrackit.weatherapp.domain;
-
+package com.fasttrackit.weatherapp.domain.city;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,8 +9,8 @@ import javax.persistence.IdClass;
 import javax.persistence.Table;
 
 /**
- * City class is mainly used to populate the table `cities` using characteristics
- * given by a weather data provider.</br>
+ * City class is mainly used to populate the table `cities` using
+ * characteristics given by a weather data provider.</br>
  * Because `cities` table uses 2 indexes, an IdClass is used: {@link CityId}
  * 
  * @author Nicolae Iotu, nicolae.g.iotu@gmail.com
@@ -19,40 +18,40 @@ import javax.persistence.Table;
  */
 
 @Entity
-@Table(name = "cities", schema = "weather_store")
+@Table(name = "cities_table", schema = "weather_store")
 @IdClass(value = CityId.class)
 public class City {
-
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "city_id", columnDefinition = "bigint auto_increment", unique = true)
 	private long city_id;
-	
+
 	// important!
-	// the second variable used for index (www_api_id) must be after city_id in alphabetical order
+	// the second variable used for index (wwwapiid) must be after city_id in
+	// alphabetical order
 	@Id
 	@Column(name = "api_id", nullable = false, unique = true)
-	private long www_api_id;
+	private long wwwapiid;
 
 	@Column(nullable = true)
 	private long api_parent_id;
 
-	@Column(nullable = false)
-	private String city_name;
+	@Column(name = "city_name", nullable = false)
+	private String cityname;
 
 	@Column(columnDefinition = "longtext")
 	private String city_name_translations;
 
-	@Column(nullable = false, length = 4)
-	private String country_code;
+	@Column(nullable = false, length = 2)
+	private String countrycode;
 
-	@Column(nullable = false)
-	private float geo_latitude;
+	@Column(name = "geo_latitude", nullable = false)
+	private float latitude;
 
-	@Column(nullable = false)
-	private float geo_longitude;
+	@Column(name = "geo_longitude", nullable = false)
+	private float longitude;
 
-	@Column(nullable = true)
+	@Column(nullable = true, length = 13)
 	private long population;
 
 	@Column(nullable = true)
@@ -66,12 +65,12 @@ public class City {
 		this.city_id = city_id;
 	}
 
-	public long getWww_api_id() {
-		return www_api_id;
+	public long getWwwapiid() {
+		return wwwapiid;
 	}
 
-	public void setWww_api_id(long www_api_id) {
-		this.www_api_id = www_api_id;
+	public void setWwwapiid(long wwwapiid) {
+		this.wwwapiid = wwwapiid;
 	}
 
 	public long getApi_parent_id() {
@@ -83,11 +82,11 @@ public class City {
 	}
 
 	public String getCity_name() {
-		return city_name;
+		return cityname;
 	}
 
 	public void setCity_name(String city_name) {
-		this.city_name = city_name;
+		this.cityname = city_name;
 	}
 
 	public String getCity_name_translations() {
@@ -98,28 +97,28 @@ public class City {
 		this.city_name_translations = city_name_translations;
 	}
 
-	public String getCountry_code() {
-		return country_code;
+	public String getCountrycode() {
+		return countrycode;
 	}
 
-	public void setCountry_code(String country_code) {
-		this.country_code = country_code;
+	public void setCountrycode(String countrycode) {
+		this.countrycode = countrycode;
 	}
 
 	public float getGeo_latitude() {
-		return geo_latitude;
+		return latitude;
 	}
 
 	public void setGeo_latitude(float geo_latitude) {
-		this.geo_latitude = geo_latitude;
+		this.latitude = geo_latitude;
 	}
 
 	public float getGeo_longitude() {
-		return geo_longitude;
+		return longitude;
 	}
 
 	public void setGeo_longitude(float geo_longitude) {
-		this.geo_longitude = geo_longitude;
+		this.longitude = geo_longitude;
 	}
 
 	public long getPopulation() {
@@ -140,9 +139,11 @@ public class City {
 
 	@Override
 	public String toString() {
-		return "City [city_id=" + city_id + ", www_api_id=" + www_api_id + ", api_parent_id=" + api_parent_id + ", city_name=" + city_name
-				+ ", city_name_translations=" + city_name_translations + ", country_code=" + country_code + ", geo_latitude=" + geo_latitude
-				+ ", geo_longitude=" + geo_longitude + ", population=" + population + ", stations_count=" + stations_count + "]";
+		return "City [city_id=" + city_id + ", wwwapiid=" + wwwapiid + ", api_parent_id="
+				+ api_parent_id + ", city_name=" + cityname + ", city_name_translations="
+				+ city_name_translations + ", countrycode=" + countrycode + ", geo_latitude="
+				+ latitude + ", geo_longitude=" + longitude + ", population=" + population
+				+ ", stations_count=" + stations_count + "]";
 	}
 
 }

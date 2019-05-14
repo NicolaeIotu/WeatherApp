@@ -1,4 +1,4 @@
-package com.fasttrackit.weatherapp.domain;
+package com.fasttrackit.weatherapp.domain.city;
 
 import java.io.Serializable;
 
@@ -14,16 +14,16 @@ public class CityId implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	private long city_id;
-	private long www_api_id;
+	private long wwwapiid;
 
 	
 	
 	public CityId() {
 		
 	}
-	public CityId(long id, long www_api_id) {
+	public CityId(long id, long wwwapiid) {
 		this.city_id = id;
-		this.www_api_id = www_api_id;
+		this.wwwapiid = wwwapiid;
 	}
 
 	
@@ -37,11 +37,11 @@ public class CityId implements Serializable {
 		this.city_id = city_id;
 	}
 	
-	public long getWww_api_id() {
-		return www_api_id;
+	public long getWwwapiid() {
+		return wwwapiid;
 	}
-	public void setWww_api_id(long www_api_id) {
-		this.www_api_id = www_api_id;
+	public void setWwwapiid(long wwwapiid) {
+		this.wwwapiid = wwwapiid;
 	}
 	
 	
@@ -59,7 +59,7 @@ public class CityId implements Serializable {
 		if(obj instanceof CityId) {
 			CityId otherCityId = (CityId) obj;
 			if(otherCityId.getCity_id() == this.getCity_id()) {
-				if(otherCityId.getWww_api_id() == this.getWww_api_id()) {
+				if(otherCityId.getWwwapiid() == this.getWwwapiid()) {
 					return true;
 				} else {
 					return false;
@@ -76,7 +76,7 @@ public class CityId implements Serializable {
 	public int hashCode() {
 		//TODO observe
 		int result = 0;
-		result = (int) (www_api_id / city_id);
+		result = (int) (wwwapiid / city_id);
 		return result;
 	}
 

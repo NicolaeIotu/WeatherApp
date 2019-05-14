@@ -1,71 +1,85 @@
 package com.fasttrackit.weatherapp.weatherprovider;
 
+import java.util.Map;
+
 /**
  * 
  * @author Nicolae Iotu, nicolae.g.iotu@gmail.com
  *
  */
 public class WeatherProvider {
+	// info
 	private String name;
 	private String url;
-	private String endpoint;
-	private String api_key;
-	//private String language = Language(LanguageType.ENGLISH);
-	private String unitsType;
-	
-	private static long callsCount = 0;
-	
-	public WeatherProvider(String name, String url, String endpoint, String api_key) {
-		this.setName(name);
-		this.setUrl(url);
-		this.setEndpoint(endpoint);
-		this.setApi_key(api_key);
-	}
 
-	public String getCallURI(String query) {
-		callsCount++;
-		return (endpoint + query + api_key);
+	// endpoint url
+	private String endpoint;
+
+	// query components
+	private Map<String, String> queryComponents;
+
+	// utilities
+	private String query = "";
+	private String callUri;
+
+	
+	public WeatherProvider() {
+
+	}
+	
+	public WeatherProvider(String name, String url, String endpoint,
+			Map<String, String> queryComponents) {
+		setupProperties(name, url, endpoint, queryComponents);
 	}
 
 	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
+		return this.name;
 	}
 
 	public String getUrl() {
-		return url;
+		return this.url;
 	}
 
-	public void setUrl(String url) {
+	public String getCallUri() {
+		return this.callUri;
+	}
+
+	public WeatherProvider setQueryComponents(Map<String, String> queryComponents) {
+		setupProperties(this.name, this.url, this.endpoint, queryComponents);
+		return this;
+	}
+
+	public void setupProperties(String name, String url, String endpoint,
+			Map<String, String> queryComponents) {
+		this.name = name;
 		this.url = url;
-	}
-
-	public String getEndpoint() {
-		return endpoint;
-	}
-
-	public void setEndpoint(String endpoint) {
 		this.endpoint = endpoint;
+		this.queryComponents = queryComponents;
+
+		buildQuery();
+		buildCallUri();
 	}
 
-	public String getApi_key() {
-		return api_key;
+	private void buildCallUri() {
+		if (this.query.length() > 0) {
+			this.callUri = endpoint + "?" + this.query;
+		} else {
+			this.callUri = endpoint;
+		}
 	}
 
-	public void setApi_key(String api_key) {
-		this.api_key = api_key;
+	private void buildQuery() {
+		this.query = "";
+		String value = "";
+		for (String key : queryComponents.keySet()) {
+			value = queryComponents.get(key);
+			if (value.length() != 0) {
+				if(query.length() != 0) {
+					this.query += "&";
+				}
+				this.query += key + "=" + value;
+			}
+		}
 	}
 
-	public static long getNumberOfCalls() {
-		return callsCount;
-	}
-
-	public static void setNumberOfCalls(long numberOfCalls) {
-		WeatherProvider.callsCount = numberOfCalls;
-	}
-	
-	
 }
