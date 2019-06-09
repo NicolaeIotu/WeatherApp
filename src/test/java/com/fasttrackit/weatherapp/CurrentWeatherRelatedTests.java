@@ -1,10 +1,9 @@
 package com.fasttrackit.weatherapp;
 
-import static org.hamcrest.CoreMatchers.not;
+import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.hamcrest.MatcherAssert.assertThat;
 
 import java.io.IOException;
-import java.net.URL;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -15,10 +14,16 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasttrackit.weatherapp.domain.currentweather.CurrentWeather;
 import com.fasttrackit.weatherapp.service.CurrentWeatherService;
-import com.fasttrackit.weatherapp.transfer.currentweather.CurrentWeatherResponse;
+import com.fasttrackit.weatherapp.tools.CurrentWeatherTools;
 import com.fasttrackit.weatherapp.weatherprovider.OpenWeatherMapWeatherProvider;
 
+/**
+ * 
+ * @author Nicolae Iotu, nicolae.g.iotu@gmail.com
+ *
+ */
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class CurrentWeatherRelatedTests {
@@ -35,25 +40,19 @@ public class CurrentWeatherRelatedTests {
 		LOGGER.info("Reading url.");
 		OpenWeatherMapWeatherProvider owmwp = new OpenWeatherMapWeatherProvider();
 
-		CurrentWeatherResponse currentWeatherResponse = null;
+		CurrentWeather currentWeather = null;
 
 		LOGGER.info("Looking for URL: {}", owmwp.getCallUri());
 
 		try {
-			URL url = new URL(owmwp.getCallUri());
-			String json = "{\"coord\":{\"lon\":138.93,\"lat\":34.97},\"weather\":[{\"id\":520,\"main\":\"Rain\",\"description\":\"light intensity shower rain\",\"icon\":\"09n\"}],\"base\":\"stations\",\"main\":{\"temp\":290.69,\"pressure\":1017,\"humidity\":82,\"temp_min\":287.59,\"temp_max\":292.15},\"visibility\":10000,\"wind\":{\"speed\":1},\"dt\":1557766211,\"sys\":{\"type\":1,\"id\":8024,\"message\":0.0064,\"country\":\"JP\",\"sunrise\":1557776535,\"sunset\":1557826747},\"id\":1851632,\"name\":\"Shuzenji\",\"cod\":200}";
-			currentWeatherResponse = objectMapper.readValue(json, CurrentWeatherResponse.class);
-			//currentWeatherResponse = objectMapper.readValue(url, CurrentWeatherResponse.class);
-			//currentWeatherResponse = CurrentWeatherParser.getCurrentWeatherResponse(json);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			currentWeather = CurrentWeatherTools.loadCurrentWeather(1851632);
+		} catch (IOException | NoSuchMethodException | SecurityException e) {
 			e.printStackTrace();
-			LOGGER.info(e.getMessage());
 		}
 
-		LOGGER.info("Got response: {}", currentWeatherResponse.toString());
+		LOGGER.info("Got response: {}", currentWeather.toString());
 
-		assertThat(1L, not(0L));
+		assertThat(currentWeather, notNullValue());
 	}
 
 }

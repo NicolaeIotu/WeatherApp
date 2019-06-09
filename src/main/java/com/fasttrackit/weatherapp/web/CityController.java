@@ -1,7 +1,5 @@
 package com.fasttrackit.weatherapp.web;
 
-import java.io.IOException;
-
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +22,11 @@ import com.fasttrackit.weatherapp.service.CityService;
 import com.fasttrackit.weatherapp.transfer.city.CreateCityRequest;
 import com.fasttrackit.weatherapp.transfer.city.UpdateCityRequest;
 
+/**
+ * 
+ * @author Nicolae Iotu, nicolae.g.iotu@gmail.com
+ *
+ */
 @RestController
 @RequestMapping(value = "/cities")
 @SuppressWarnings("rawtypes")
@@ -71,9 +74,9 @@ public class CityController {
 	}
 
 	// by name containing
-	@GetMapping(value = "/name/{cityNameLike}")
+	@GetMapping(value = "/name{q}")
 	public ResponseEntity<Page<City>> getCitiesByNameContaining(
-			@PathVariable("cityNameLike") String cityNameLike, Pageable pageable) {
+			@RequestParam("q") String cityNameLike, Pageable pageable) {
 		Page<City> response = cityService.getCitiesByNameContaining(cityNameLike, pageable);
 		// TODO all over, discuss response http status
 		return new ResponseEntity<>(response, HttpStatus.OK);
@@ -87,7 +90,7 @@ public class CityController {
 	}
 
 	@GetMapping("/populate/for/development/only/takes/long/time")
-	public long populateCities(boolean doFullPopulation) throws SecurityException, IOException {
+	public long populateCities(boolean doFullPopulation) throws Exception {
 		long citiesLength = cityService.populateCities(doFullPopulation);
 		return citiesLength;
 	}
@@ -96,7 +99,6 @@ public class CityController {
 	@PutMapping("/{id}")
 	public ResponseEntity updateCity(@PathVariable("id") long id,
 			@RequestBody @Valid UpdateCityRequest request) {
-//		cityService.updateCity(id, request);
 		cityService.updateCity(request);
 		return new ResponseEntity(HttpStatus.NO_CONTENT);
 	}

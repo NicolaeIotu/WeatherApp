@@ -10,6 +10,11 @@ import javax.json.JsonReader;
 
 import com.fasttrackit.weatherapp.transfer.city.CreateCityRequest;
 
+/**
+ * 
+ * @author Nicolae Iotu, nicolae.g.iotu@gmail.com
+ *
+ */
 public class CitiesParser {
 
 	/**
@@ -43,10 +48,10 @@ public class CitiesParser {
 			throw e;
 		}
 	}
-	
+
 	@SuppressWarnings("unused")
 	public int getMaxCitiesToParse() {
-		if(countCities == 0 || countCities < MAXCITIES_TO_PARSE) {
+		if (countCities == 0 || countCities < MAXCITIES_TO_PARSE) {
 			return 0;
 		} else {
 			if (MAXCITIES_TO_PARSE == 0) {
@@ -69,38 +74,42 @@ public class CitiesParser {
 
 		final JsonObject cityJson = citiesJsonArray.get(index).asJsonObject();
 
-		// errors occurred during tests and 
-		// too many entries to check if all fields are present
-		// so I'm going use an approach using default values
+		// default values approach due to errors encountered while parsing
 		JsonArray emptyJsonArray = Json.createArrayBuilder().build();
 
 		// api_id
 		createCityRequest.setWwwapiid(string2long(cityJson.get("id").toString()));
 		// api_parent_id
-		createCityRequest.setApi_parent_id(string2long(cityJson.getJsonObject("geoname").get("parent").toString()));
+		createCityRequest.setApi_parent_id(
+				string2long(cityJson.getJsonObject("geoname").get("parent").toString()));
 		// city_name
 		createCityRequest.setCity_name(cityJson.getString("name"));
 		// city_name_translations
-		createCityRequest.setCity_name_translations(cityJson.getOrDefault("langs", emptyJsonArray).asJsonArray().toString());
+		createCityRequest.setCity_name_translations(
+				cityJson.getOrDefault("langs", emptyJsonArray).asJsonArray().toString());
 		// countrycode
 		createCityRequest.setCountrycode(cityJson.getString("country"));
 		// geo_latitude
-		createCityRequest.setGeo_latitude(Float.parseFloat(cityJson.getJsonObject("coord").get("lat").toString()));
+		createCityRequest.setGeo_latitude(
+				Float.parseFloat(cityJson.getJsonObject("coord").get("lat").toString()));
 		// geo_longitude
-		createCityRequest.setGeo_longitude(Float.parseFloat(cityJson.getJsonObject("coord").get("lon").toString()));
+		createCityRequest.setGeo_longitude(
+				Float.parseFloat(cityJson.getJsonObject("coord").get("lon").toString()));
 		// population
-		createCityRequest.setPopulation(string2long(cityJson.getJsonObject("stat").get("population").toString()));
+		createCityRequest.setPopulation(
+				string2long(cityJson.getJsonObject("stat").get("population").toString()));
 		// stations_count
-		createCityRequest.setStations_count(cityJson.getOrDefault("stations", emptyJsonArray).asJsonArray().size());
+		createCityRequest.setStations_count(
+				cityJson.getOrDefault("stations", emptyJsonArray).asJsonArray().size());
 
 		return createCityRequest;
 	}
-	
+
 	private long string2long(String input) {
 		long result = -1L;
 		try {
 			result = Long.parseLong(input);
-		} catch (NumberFormatException  e) {
+		} catch (NumberFormatException e) {
 			try {
 				result = Math.round(Float.parseFloat(input));
 			} catch (NumberFormatException e2) {
@@ -111,7 +120,8 @@ public class CitiesParser {
 	}
 
 	public void loadCitiesJSON() throws SecurityException, IOException {
-		try (InputStream inputStream = CitiesParser.class.getClassLoader().getResourceAsStream("openweathermap/current.city.list.json")) {
+		try (InputStream inputStream = CitiesParser.class.getClassLoader()
+				.getResourceAsStream("openweathermap/current.city.list.json")) {
 
 			JsonReader reader = Json.createReader(inputStream);
 			setCitiesJsonArray(reader.readArray());

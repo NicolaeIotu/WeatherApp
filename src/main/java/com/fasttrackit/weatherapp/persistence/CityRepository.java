@@ -6,6 +6,11 @@ import org.springframework.data.repository.PagingAndSortingRepository;
 
 import com.fasttrackit.weatherapp.domain.city.City;
 
+/**
+ * 
+ * @author Nicolae Iotu, nicolae.g.iotu@gmail.com
+ *
+ */
 public interface CityRepository extends PagingAndSortingRepository<City, Long> {
 
 	// Important: table columns to be searched must be named lowercase, no

@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tree>
+	<li name=".">
+		<li>
+			<a href="#">src</a>
+			<ul>
+				<li>
+					<a href="#">main</a>
+					<ul>
+						<li>
+							<a href="#">java</a>
+							<ul>
+								<li>
+									<a href="#">com</a>
+									<ul>
+										<li>
+											<a href="#">fasttrackit</a>
+											<ul>
+												<li>
+													<a href="#">weatherapp</a>
+													<ul>
+														<li>
+															<a href="#">configuration</a>
+															<ul>
+																<li>SwaggerConfig.java</li>
+															</ul>
+														</li>
+														<li>
+															<a href="#">domain</a>
+															<ul>
+																<li>
+																	<a href="#">city</a>
+																	<ul>
+																		<li>CityId.java</li>
+																		<li>City.java</li>
+																	</ul>
+																</li>
+																<li>
+																	<a href="#">currentweather</a>
+																	<ul>
+																		<li>CurrentWeather.java</li>
+																	</ul>
+																</li>
+															</ul>
+														</li>
+														<li>
+															<a href="#">persistence</a>
+															<ul>
+																<li>CityRepository.java</li>
+																<li>CurrentWeatherRepository.java</li>
+															</ul>
+														</li>
+														<li>
+															<a href="#">service</a>
+															<ul>
+																<li>CityService.java</li>
+																<li>CurrentWeatherService.java</li>
+															</ul>
+														</li>
+														<li>ServletInitializer.java</li>
+														<li>
+															<a href="#">tools</a>
+															<ul>
+																<li>CitiesParser.java</li>
+																<li>CurrentWeatherTools.java</li>
+															</ul>
+														</li>
+														<li>
+															<a href="#">transfer</a>
+															<ul>
+																<li>
+																	<a href="#">city</a>
+																	<ul>
+																		<li>CityListReponse.java</li>
+																		<li>CreateCityRequest.java</li>
+																		<li>GetFilteredCitiesRequest.java</li>
+																		<li>UpdateCityRequest.java</li>
+																	</ul>
+																</li>
+																<li>
+																	<a href="#">currentweather</a>
+																	<ul>
+																		<li>CreateCurrentWeatherRequest.java</li>
+																		<li>CurrentWeatherListResponse.java</li>
+																		<li>CurrentWeatherResponse.java</li>
+																		<li>DeleteCurrentWeatherRequest.java</li>
+																		<li>UpdateCurrentWeatherRequest.java</li>
+																	</ul>
+																</li>
+															</ul>
+														</li>
+														<li>WeatherAppApplication.java</li>
+														<li>
+															<a href="#">weatherprovider</a>
+															<ul>
+																<li>OpenWeatherMapWeatherProvider.java</li>
+																<li>WeatherProvider.java</li>
+															</ul>
+														</li>
+														<li>
+															<a href="#">web</a>
+															<ul>
+																<li>CityController.java</li>
+																<li>CurrentWeatherController.java</li>
+															</ul>
+														</li>
+													</ul>
+												</li>
+											</ul>
+										</li>
+									</ul>
+								</li>
+							</ul>
+						</li>
+					</ul>
+					<li>
+						<a href="#">resources</a>
+						<ul>
+							<li>application.properties</li>
+							<li>
+								<a href="#">openweathermap</a>
+								<ul>
+									<li>current.city.list.json</li>
+									<li>current.city.list.json.head20000</li>
+								</ul>
+							</li>
+							<li>
+								<a href="#">static</a>
+							</li>
+							<li>
+								<a href="#">templates</a>
+							</li>
+						</ul>
+					</li>
+					<li>
+						<a href="#">webapp</a>
+						<ul>
+							<li>
+								<a href="#">css</a>
+								<ul>
+									<li>ajax-bootstrap-select.min.css</li>
+									<li>all.min.css</li>
+									<li>bootstrap2-toggle.min.css</li>
+									<li>bootstrap.min.css</li>
+									<li>bootstrap-select.min.css</li>
+									<li>li-explore.css</li>
+									<li>fontawesome.min.css</li>
+									<li>weatherapp.css</li>
+								</ul>
+							</li>
+							<li>
+								<a href="#">img</a>
+								<ul>
+									<li>ic_error_18px.svg</li>
+									<li>ic_folder_24px.svg</li>
+									<li>ic_folder_open_24px.svg</li>
+									<li>ic_insert_drive_li_24px.svg</li>
+									<li>ic_refresh_24px.svg</li>
+									<li>live_weather_75.png</li>
+									<li>
+										<a href="#">logos</a>
+										<ul>
+											<li>bootstrap.png</li>
+											<li>java.png</li>
+											<li>jquery.png</li>
+											<li>maven.jpg</li>
+											<li>mysql.png</li>
+											<li>springboot.png</li>
+											<li>tomcat.png</li>
+										</ul>
+									</li>
+									<li>search_cities_75.png</li>
+									<li>
+										<a href="#">weather</a>
+										<ul>
+											<li>01d.png</li>
+											<li>01n.png</li>
+											<li>02d.png</li>
+											<li>02n.png</li>
+											<li>03d.png</li>
+											<li>03n.png</li>
+											<li>04d.png</li>
+											<li>04n.png</li>
+											<li>09d.png</li>
+											<li>09n.png</li>
+											<li>10d.png</li>
+											<li>10n.png</li>
+											<li>11d.png</li>
+											<li>11n.png</li>
+											<li>13d.png</li>
+											<li>13n.png</li>
+											<li>50d.png</li>
+											<li>50n.png</li>
+										</ul>
+									</li>
+								</ul>
+							</li>
+							<li>index.html</li>
+							<li>
+								<a href="#">js</a>
+								<ul>
+									<li>ajax-bootstrap-select.min.js</li>
+									<li>all.min.js</li>
+									<li>bootstrap2-toggle.min.js</li>
+									<li>bootstrap.bundle.min.js</li>
+									<li>bootstrap-select.min.js</li>
+									<li>citydetails.js</li>
+									<li>citypreview.js</li>
+									<li>li-explore.js</li>
+									<li>jquery-3.4.1.min.js</li>
+									<li>searchcity.js</li>
+									<li>weatherapp.js</li>
+								</ul>
+							</li>
+							<li>legal.html</li>
+							<li>licence.html</li>
+							<li>technical-details.html</li>
+						</ul>
+					</li>
+				</li>
+				<li>
+					<a href="#">test</a>
+					<ul>
+						<li>
+							<a href="#">java</a>
+							<ul>
+								<li>
+									<a href="#">com</a>
+									<ul>
+										<li>
+											<a href="#">fasttrackit</a>
+											<ul>
+												<li>
+													<a href="#">weatherapp</a>
+													<ul>
+														<li>CityRelatedTests.java</li>
+														<li>CurrentWeatherRelatedTests.java</li>
+													</ul>
+												</li>
+											</ul>
+										</li>
+									</ul>
+								</li>
+							</ul>
+						</li>
+					</ul>
+				</li>
+			</ul>
+		</li>
+		<li>
+			<a href="#">target...</a>
+		</li>
+		<li>tree.xml</li>
+		<li>HELP.md</li>
+		<li>LICENSE</li>
+		<li>mvnw</li>
+		<li>mvnw.cmd</li>
+		<li>pom.xml</li>
+		<li>ProjectBrief.md</li>
+		<li>ProjectBrief.odt</li>
+		<li>README.md</li>
+	</li>
+</tree>

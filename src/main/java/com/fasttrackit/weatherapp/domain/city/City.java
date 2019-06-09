@@ -9,14 +9,13 @@ import javax.persistence.IdClass;
 import javax.persistence.Table;
 
 /**
- * City class is mainly used to populate the table `cities` using
+ * City class is mainly used to populate the table `cities_table` using
  * characteristics given by a weather data provider.</br>
- * Because `cities` table uses 2 indexes, an IdClass is used: {@link CityId}
+ * Because this table uses 2 indexes, an IdClass is used: {@link CityId}
  * 
  * @author Nicolae Iotu, nicolae.g.iotu@gmail.com
  *
  */
-
 @Entity
 @Table(name = "cities_table", schema = "weather_store")
 @IdClass(value = CityId.class)

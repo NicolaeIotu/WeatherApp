@@ -4,6 +4,11 @@ import java.util.List;
 
 import com.fasttrackit.weatherapp.domain.currentweather.CurrentWeather;
 
+/**
+ * 
+ * @author Nicolae Iotu, nicolae.g.iotu@gmail.com
+ *
+ */
 public class CurrentWeatherListResponse {
 	List<CurrentWeather> content;
 

@@ -1,0 +1,79 @@
+@charset "UTF-8";
+
+body {
+	padding-top: 3.5rem;
+}
+
+.jumbotron {
+    background-color: #fff;
+}
+
+.bd-placeholder-img {
+	font-size: 1.125rem;
+	text-anchor: middle;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+@media ( min-width : 768px) {
+	.bd-placeholder-img-lg {
+		font-size: 3.5rem;
+	}
+}
+
+.btn-default, .btn-light {
+	color: #333;
+	background-color: #fff;
+	border-color: #ccc;
+}
+
+code {
+	color: #ffffff;
+	background-color: #2e3436;
+}
+
+.explain {
+	display: none
+}
+
+.carousel-caption {
+	color: #333;
+	text-align: center;
+	top: 0px;
+}
+
+.carousel-item img {
+	margin: auto;
+}
+
+.carousel-indicators li {
+	background-color: #333;
+}
+
+.carousel-control-prev-icon {
+	background-image:
+		url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='333' viewBox='0 0 8 8'%3e%3cpath d='M5.25 0l-4 4 4 4 1.5-1.5-2.5-2.5 2.5-2.5-1.5-1.5z'/%3e%3c/svg%3e");
+}
+
+.carousel-control-next-icon {
+	background-image:
+		url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='333' viewBox='0 0 8 8'%3e%3cpath d='M2.75 0l-1.5 1.5 2.5 2.5-2.5 2.5 1.5 1.5 4-4-4-4z'/%3e%3c/svg%3e");
+}
+
+.d-block {
+	padding-top: 40px;
+}
+
+.carousel-indicators {
+	bottom: -20px;
+}
+
+.card {
+	border-color: gray;
+}
+
+
+
+

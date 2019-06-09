@@ -7,6 +7,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+/**
+ * 
+ * @author Nicolae Iotu, nicolae.g.iotu@gmail.com
+ *
+ */
 @Entity
 @Table(name = "current_weather", schema = "weather_store")
 public class CurrentWeather {
@@ -18,10 +23,6 @@ public class CurrentWeather {
 
 	@Column(nullable = false)
 	private String units_type;
-
-	// @OneToOne(fetch = FetchType.LAZY)
-	// @MapsId("wwwapiid")
-	// private City city;
 
 	@Column(nullable = false, unique = true)
 	private long wwwapiid;
@@ -39,7 +40,7 @@ public class CurrentWeather {
 	private float geo_longitude;
 
 	@Column(nullable = false)
-	private int weather_condition_id;
+	private float weather_condition_id;
 
 	@Column(nullable = false)
 	private String weather_condition_main;
@@ -60,28 +61,28 @@ public class CurrentWeather {
 	private float main_temp_max;
 
 	@Column(nullable = false)
-	private int main_pressure;
+	private float main_pressure;
 
 	@Column(nullable = true)
-	private int main_pressure_sea_level;
+	private float main_pressure_sea_level;
 
 	@Column(nullable = true)
-	private int main_pressure_grnd_level;
+	private float main_pressure_grnd_level;
 
 	@Column(nullable = false)
-	private int main_humidity;
+	private float main_humidity;
 
 	@Column(nullable = false)
 	private float wind_speed;
 
 	@Column(nullable = false)
-	private int wind_deg;
+	private float wind_deg;
 
 	@Column(nullable = false)
-	private int clouds;
-	
+	private float clouds;
+
 	@Column(nullable = false)
-	private int visibility;
+	private float visibility;
 
 	@Column(nullable = false)
 	private float rain_last_1_hr;
@@ -107,25 +108,19 @@ public class CurrentWeather {
 	@Column(nullable = false)
 	private String sys_sunset_timestamp_utc;
 
-	
-	
 	public CurrentWeather() {
-		
+
 	}
-	
-	
-	
-	
-	public CurrentWeather(String units_type, long wwwapiid,
-			String city_name, String countrycode, float geo_latitude, float geo_longitude,
-			int weather_condition_id, String weather_condition_main,
-			String weather_condition_description, String weather_condition_icon, float main_temp,
-			float main_temp_min, float main_temp_max, int main_pressure,
-			int main_pressure_sea_level, int main_pressure_grnd_level, int main_humidity,
-			float wind_speed, int wind_deg, int clouds, int visibility, float rain_last_1_hr, float rain_last_3_hr,
+
+	public CurrentWeather(String units_type, long wwwapiid, String city_name, String countrycode,
+			float geo_latitude, float geo_longitude, float weather_condition_id,
+			String weather_condition_main, String weather_condition_description,
+			String weather_condition_icon, float main_temp, float main_temp_min,
+			float main_temp_max, float main_pressure, float main_pressure_sea_level,
+			float main_pressure_grnd_level, float main_humidity, float wind_speed, float wind_deg,
+			float clouds, float visibility, float rain_last_1_hr, float rain_last_3_hr,
 			float snow_last_1_hr, float snow_last_3_hr, String calculation_timestamp_utc,
 			String sys_country, String sys_sunrise_timestamp_utc, String sys_sunset_timestamp_utc) {
-		//this.current_weather_id = current_weather_id;
 		this.units_type = units_type;
 		this.wwwapiid = wwwapiid;
 		this.city_name = city_name;
@@ -173,14 +168,6 @@ public class CurrentWeather {
 		this.units_type = units_type;
 	}
 
-//	public City getCity() {
-//		return city;
-//	}
-//
-//	public void setCity(City city) {
-//		this.city = city;
-//	}
-
 	public long getWwwapiid() {
 		return wwwapiid;
 	}
@@ -221,11 +208,11 @@ public class CurrentWeather {
 		this.geo_longitude = geo_longitude;
 	}
 
-	public int getWeather_condition_id() {
+	public float getWeather_condition_id() {
 		return weather_condition_id;
 	}
 
-	public void setWeather_condition_id(int weather_condition_id) {
+	public void setWeather_condition_id(float weather_condition_id) {
 		this.weather_condition_id = weather_condition_id;
 	}
 
@@ -277,35 +264,35 @@ public class CurrentWeather {
 		this.main_temp_max = main_temp_max;
 	}
 
-	public int getMain_pressure() {
+	public float getMain_pressure() {
 		return main_pressure;
 	}
 
-	public void setMain_pressure(int main_pressure) {
+	public void setMain_pressure(float main_pressure) {
 		this.main_pressure = main_pressure;
 	}
 
-	public int getMain_pressure_sea_level() {
+	public float getMain_pressure_sea_level() {
 		return main_pressure_sea_level;
 	}
 
-	public void setMain_pressure_sea_level(int main_pressure_sea_level) {
+	public void setMain_pressure_sea_level(float main_pressure_sea_level) {
 		this.main_pressure_sea_level = main_pressure_sea_level;
 	}
 
-	public int getMain_pressure_grnd_level() {
+	public float getMain_pressure_grnd_level() {
 		return main_pressure_grnd_level;
 	}
 
-	public void setMain_pressure_grnd_level(int main_pressure_grnd_level) {
+	public void setMain_pressure_grnd_level(float main_pressure_grnd_level) {
 		this.main_pressure_grnd_level = main_pressure_grnd_level;
 	}
 
-	public int getMain_humidity() {
+	public float getMain_humidity() {
 		return main_humidity;
 	}
 
-	public void setMain_humidity(int main_humidity) {
+	public void setMain_humidity(float main_humidity) {
 		this.main_humidity = main_humidity;
 	}
 
@@ -317,27 +304,27 @@ public class CurrentWeather {
 		this.wind_speed = wind_speed;
 	}
 
-	public int getWind_deg() {
+	public float getWind_deg() {
 		return wind_deg;
 	}
 
-	public void setWind_deg(int wind_deg) {
+	public void setWind_deg(float wind_deg) {
 		this.wind_deg = wind_deg;
 	}
 
-	public int getClouds() {
+	public float getClouds() {
 		return clouds;
 	}
 
-	public void setClouds(int clouds) {
+	public void setClouds(float clouds) {
 		this.clouds = clouds;
-	}	
+	}
 
-	public int getVisibility() {
+	public float getVisibility() {
 		return visibility;
 	}
 
-	public void setVisibility(int visibility) {
+	public void setVisibility(float visibility) {
 		this.visibility = visibility;
 	}
 
@@ -405,8 +392,6 @@ public class CurrentWeather {
 		this.sys_sunset_timestamp_utc = sys_sunset_timestamp_utc;
 	}
 
-	
-	
 	@Override
 	public String toString() {
 		return "CurrentWeather [current_weather_id=" + current_weather_id + ", units_type="
@@ -427,9 +412,5 @@ public class CurrentWeather {
 				+ sys_country + ", sys_sunrise_timestamp_utc=" + sys_sunrise_timestamp_utc
 				+ ", sys_sunset_timestamp_utc=" + sys_sunset_timestamp_utc + "]";
 	}
-
-
-	
-	
 
 }

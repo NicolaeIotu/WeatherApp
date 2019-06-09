@@ -10,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -19,6 +21,11 @@ import com.fasttrackit.weatherapp.tools.CitiesParser;
 import com.fasttrackit.weatherapp.transfer.city.CreateCityRequest;
 import com.fasttrackit.weatherapp.transfer.city.UpdateCityRequest;
 
+/**
+ * 
+ * @author Nicolae Iotu, nicolae.g.iotu@gmail.com
+ *
+ */
 @Service
 public class CityService {
 	private static final Logger LOGGER = LoggerFactory.getLogger(CityService.class);
@@ -101,12 +108,13 @@ public class CityService {
 	}
 
 	// POPULATE - BATCH CREATE
-	@Transactional
-	public long populateCities(boolean doFullPopulation) throws SecurityException, IOException {
+	@Transactional(propagation = Propagation.REQUIRES_NEW, isolation = Isolation.SERIALIZABLE)
+	public long populateCities(boolean doFullPopulation) throws Exception {
 		// TODO different thread
 		LOGGER.info("Populating cities.");
-		
-		deleteAllCities();
+
+		if (doFullPopulation)
+			deleteAllCities();
 
 		CitiesParser citiesParser;
 		try {
@@ -116,7 +124,8 @@ public class CityService {
 		}
 
 		final int MAXCITIES_CREATE_UPDATE = CitiesParser.MAXCITIES_CREATE_UPDATE;
-		final int citiesCount = doFullPopulation ? citiesParser.getCountCities() : citiesParser.getMaxCitiesToParse();
+		final int citiesCount = doFullPopulation ? citiesParser.getCountCities()
+				: citiesParser.getMaxCitiesToParse();
 
 		List<City> citiesList = new ArrayList<City>();
 
@@ -137,9 +146,6 @@ public class CityService {
 		}
 
 		LOGGER.info("End of pool at index: {}", index);
-
-		// make sure this large data object is marked as garbage
-		citiesParser = null;
 
 		return ((long) index);
 	}

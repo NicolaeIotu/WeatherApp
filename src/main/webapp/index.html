@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="The WeatherApp accreditation project">
+<meta name="author" content="IOTU NICOLAE, nicolae.g.iotu@gmail.com">
+<meta name="keywords" content="WeatherApp, Iotu Nicolae, nicolae.g.iotu@gmail.com" />
+<meta name="description"
+	content="This is the home page of the WeatherApp accreditation project developed by IOTU NICOLAE, nicolae.g.iotu@gmail.com."
+/>
+<meta name="subject" content="The WeatherApp accreditation project">
+<meta name="robots" content="noindex,nofollow" />
+<meta name="Classification" content="Accreditation, Demo">
+<meta name="designer" content="IOTU NICOLAE, nicolae.g.iotu@gmail.com">
+<meta name="copyright"
+	content="© 2019 IOTU NICOLAE, nicolae.g.iotu@gmail.com ® All rights
+			reserved."
+>
+<meta name="reply-to" content="nicolae.g.iotu@gmail.com">
+<meta name="owner" content="IOTU NICOLAE, nicolae.g.iotu@gmail.com">
+<title>WeatherApp Home Page</title>
+
+<link href="./css/bootstrap.min.css" rel="stylesheet" type="text/css">
+<link href="./css/bootstrap-select.min.css" rel="stylesheet" type="text/css">
+<link href="./css/ajax-bootstrap-select.min.css" rel="stylesheet" type="text/css">
+<link href="./css/bootstrap2-toggle.min.css" rel="stylesheet" type="text/css">
+<link href="./css/weatherapp.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+	<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+		<a class="navbar-brand clearfix" href="http://localhost:8080" target="_self" style="">The
+			WeatherApp</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse"
+			data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false"
+			aria-label="Toggle navigation"
+		>
+			<span class="navbar-toggler-icon"></span>
+		</button>
+
+		<div class="collapse navbar-collapse" id="navbarsExampleDefault">
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item active"><a class="nav-link"
+					href="http://localhost:8080/swagger-ui.html" title="Controllers Documentation" target="_blank"
+				>Controllers <span class="sr-only">(current)</span>
+				</a></li>
+				<li id="explain_li" class="nav-item" style="cursor: pointer;"><a class="nav-link"
+					onclick="toggleExplain()" title="Show/Hide Explanations"
+				>Explain <span class="sr-only">(current)</span>
+				</a></li>
+				<li class="nav-item"><a class="nav-link"
+					href="http://localhost:8080/technical-details.html" title="Technical Details"
+				>Technical Details <span class="sr-only">(current)</span>
+				</a></li>
+				<li class="nav-item"><a class="nav-link" href="http://localhost:8080/legal.html"
+					title="Legal"
+				>Legal<span class="sr-only">(current)</span>
+				</a></li>
+			</ul>
+
+			<div class="mr-3" title="General Units">
+				<input checked id="toggle-system" data-toggle="toggle" data-on="Metric" data-off="Imperial"
+					data-width="90" data-height="38" data-onstyle="info" data-offstyle="success" type="checkbox"
+				>
+			</div>
+
+			<div title="Temperature Units">
+				<input checked id="toggle-temperature" data-toggle="toggle" data-on="°C" data-off="°F"
+					data-width="90" data-height="38" data-onstyle="info" data-offstyle="success" type="checkbox"
+				>
+			</div>
+		</div>
+
+		<!-- EXPLAIN TOP BAR -->
+		<div class="explain pl-2 pr-2 pt-2 float-left" style="top: 55px; left: 0px; position: absolute;">
+			<div class="float-right w-25 text-justify pb-0 badge badge-primary text-wrap"
+				style="min-width: 200px"
+			>
+				<p style="font-size: small;">The toggle buttons are build using Bootstrap Toggle pluggin.
+					Once buttons triggered, javascript functions detect, convert and display relevant values all
+					over the page. This is a frontend only feature.</p>
+			</div>
+			<div class="w-25 text-justify pb-0 badge badge-primary text-wrap" style="min-width: 200px">
+				<p style="font-size: small;">The navigation top bar is build using standard Bootstrap navbar
+					and buttons. The fields shown when Explain mode is activated are build using Bootstrap badges.
+					Whenever possible throughout Bootstrap classes were used instead of custom css.</p>
+			</div>
+		</div>
+	</nav>
+
+	<main role="main"> <!-- TOAST -->
+	<div aria-live="polite" aria-atomic="true" style="position: relative;">
+		<div id="main_error_toast" class="toast"
+			style="position: absolute; top: 0; left: 0; right: 0; margin: auto; border-color: red;"
+			data-autohide="false"
+		>
+			<div class="toast-header" style="background-color: #cc3a5f; color: white;">
+				<img src="./img/ic_error_18px.svg" class="rounded mr-2"> <strong class="mr-auto">ERROR!</strong>
+				<button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="toast-body">
+				<p style="padding: 0; margin: 0">
+					Could not obtain the details requested!<br />Please try again.
+				</p>
+			</div>
+		</div>
+	</div>
+
+	<!-- MAIN CONTENT -->
+	<div id="intro" class="jumbotron jumbotron-fluid mt-4 mb-0 pt-0 pb-0" style="display: block;">
+		<div class="container">
+			<h1 class="display-4">The WeatherApp</h1>
+			<p>
+				This is the home page of the WeatherApp accreditation project developed by IOTU NICOLAE,
+				nicolae.g.iotu@gmail.com.<br />Among other capabilities, The WeatherApp can search cities and
+				weather in own database and show live weather conditions obtained from a remote weather data
+				provider (https://openweathermap.org).<br />Use the field below to search cities by name. Click
+				a city to get the updated weather for that location.<br /> <br />Check out the links at the
+				top for more including:
+			<ul>
+				<li>controllers documentation (Swagger UI)</li>
+				<li>inline explanations</li>
+				<li>technical details</li>
+				<li>technical diagrams</li>
+			</ul>
+			</p>
+		</div>
+	</div>
+
+
+
+	<!-- SEARCH FIELD -->
+	<div class="container mt-4">
+		<div class="w-50" style="display: block; margin: auto;">
+			<div class="explain text-justify pb-0 badge badge-primary text-wrap mb-2"
+				style="position: relative"
+			>
+				<p style="font-size: small;">
+					Search city feature is build starting from Ajax Bootstrap Select pluggin. Searching a city
+					involves Ajax calls to backend Java endpoint
+					<code>/cities/name?q=nameFragment</code>
+					exposed by class
+					<code>com.fasttrackit.weatherapp.web.CityController</code>
+					.<br />The result is returned in json format which is afterwards processed in javascript in
+					order to show below the search field a list of city names containing search fragment.<br /> <br />Sample
+					output: <a class="font-weight-normal text-reset" style="font-size: medium;"
+						href="http://localhost:8080/cities/name?q=clu" target="_blank"
+					>http://localhost:8080/cities/name?q=clu</a>
+				</p>
+			</div>
+			<form class="form-inline">
+				<select id="ajax-select" class="selectpicker" data-live-search="true"></select>
+			</form>
+		</div>
+	</div>
+	<!-- END SEARCH FIELD -->
+
+
+	<div class="jumbotron jumbotron-fluid mt-0 pt-0 pb-0">
+
+		<div class="container">
+
+			<!-- SPINNER -->
+			<div class="text-center pt-0 pb-0" style="height: 4rem;">
+				<div id="details_spinner" class="spinner-border text-success"
+					style="display: none; width: 2rem; height: 2rem; margin-top: 1rem" role="status"
+				>
+					<span class="sr-only">Loading...</span>
+				</div>
+			</div>
+			<!-- END SPINNER -->
+
+
+			<!-- EXPLAIN DETAILS -->
+			<div class="explain w-50" style="display: block; margin: auto;">
+				<div class="explain text-justify pb-0 badge badge-primary text-wrap mb-2"
+					style="position: relative"
+				>
+					<p style="font-size: small;">
+						Weather details are obtained using Ajax calls to backend Java endpoint
+						<code>/weather/{id}</code>
+						exposed by class
+						<code>com.fasttrackit.weatherapp.web.CurrentWeatherController</code>
+						.<br />In the backend a check is made in own database for an up to date result. If no result
+						is found, or if the result is older than 3 hours, the backend makes an online request to the
+						weather provider https://openweathermap.org.<br /> The result of this call is first stored
+						into own database for later usage, and afterwards formated and returned as json in response to
+						the Ajax call. This result is processed in javascript in order to populate the details.<br />
+						<br />Sample output: <a class="font-weight-normal text-reset" style="font-size: medium;"
+							href="http://localhost:8080/weather/2643490" target="_blank"
+						>http://localhost:8080/weather/2643490</a>
+					</p>
+				</div>
+			</div>
+
+			<!-- WEATHER DETAILS -->
+			<div id="weather_details" class="alert alert-success mt-6" role="alert" style="display: none">
+				<div class="row">
+					<div class="col-auto mr-auto">
+						<img id="details_icon" src="#" width="50" height="50"
+							onerror="this.onerror=null; this.src='#';" class="float-left mt-0 ml-0"
+						>
+						<h1 class="d-inline mr-4" id="details_citycountry"></h1>
+						<span id="details_timestamp"></span>
+						<p>
+							<span id="details_main"></span><span id="details_description"></span>
+						</p>
+					</div>
+					<div class="col-auto">
+						<p class="text-right">
+							<span id="details_latlon"></span><br /> <span id="details_sunrise"></span><br /> <span
+								id="details_sunset"
+							></span>
+						</p>
+					</div>
+				</div>
+
+				<div class="w-50" style="margin: auto">
+					<div class="row rounded-lg bg-light">
+						<div class="col">
+							Temperature <span class="temp_uom"></span>
+						</div>
+						<div class="col-8">
+							<span id="details_temp" data-temperature></span>
+						</div>
+					</div>
+					<div class="row rounded-lg bg-light mt-1">
+						<div class="col">Pressure mb</div>
+						<div class="col-8">
+							<span id="details_pres"></span>
+						</div>
+					</div>
+					<div class="row rounded-lg bg-light mt-1">
+						<div class="col">
+							Wind Speed <span class="windspeed_uom" data-metric="m/s" data-imperial="miles/hr"></span>
+						</div>
+						<div class="col-8">
+							<span id="details_wind_speed" data-windspeed></span>
+						</div>
+					</div>
+					<div class="row rounded-lg bg-light mt-1">
+						<div class="col">Wind Direction °</div>
+						<div class="col-8">
+							<span id="details_wind_deg"></span>
+						</div>
+					</div>
+					<div class="row rounded-lg bg-light mt-1">
+						<div class="col">Humidity %</div>
+						<div class="col-8">
+							<span id="details_humidity"></span>
+						</div>
+					</div>
+					<div class="row rounded-lg bg-light mt-1">
+						<div class="col">Visibility m</div>
+						<div class="col-8">
+							<span id="details_visiblity"></span>
+						</div>
+					</div>
+					<div class="row rounded-lg bg-light mt-1">
+						<div class="col">Clouds %</div>
+						<div class="col-8">
+							<span id="details_clouds"></span>
+						</div>
+					</div>
+					<div class="row rounded-lg bg-light mt-1">
+						<div class="col">Rain last 1h mm</div>
+						<div class="col-8">
+							<span id="details_rain_1"></span>
+						</div>
+					</div>
+					<div class="row rounded-lg bg-light mt-1">
+						<div class="col">Rain last 3h mm</div>
+						<div class="col-8">
+							<span id="details_rain_3"></span>
+						</div>
+					</div>
+					<div class="row rounded-lg bg-light mt-1">
+						<div class="col">Snow last 1h mm</div>
+						<div class="col-8">
+							<span id="details_snow_1"></span>
+						</div>
+					</div>
+					<div class="row rounded-lg bg-light mt-1">
+						<div class="col">Snow last 3h mm</div>
+						<div class="col-8">
+							<span id="details_snow_3"></span>
+						</div>
+					</div>
+				</div>
+
+			</div>
+			<!-- END WEATHER DETAILS -->
+		</div>
+
+	</div>
+
+
+	<!-- WEATHER PREVIEWS -->
+	<div class="container">
+
+		<!-- EXPLAIN PREVIEWS -->
+		<div class="explain w-50" style="display: block; margin: auto;">
+			<div class="explain text-justify pb-0 badge badge-primary text-wrap mb-2"
+				style="position: relative"
+			>
+				<p style="font-size: small;">Weather previews use the same approach as the Weather details
+					section above. The only difference is the display of the data at the frontend. The previews
+					only show a brief portion of the data obtained.</p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-4">
+				<!-- PREVIEW SPINNER -->
+				<div id="preview_spinner1" class="text-center pt-0 pb-0" style="height: 4rem;">
+					<div class="spinner-border text-success"
+						style="display: inline-block; width: 2rem; height: 2rem; margin-top: 1rem" role="status"
+					>
+						<span class="sr-only">Loading...</span>
+					</div>
+				</div>
+
+				<!-- PREVIEW CONTENT -->
+				<div id="preview1" class="container" style="display: none">
+					<div class="row">
+						<img id="preview_icon1" src="#" width="50" height="50"
+							onerror="this.onerror=null; this.src='#;" class="float-left mt-0 ml-0"
+						>
+						<h2 id="preview_citycountry1"></h2>
+					</div>
+					<div class="row rounded-lg bg-light">
+						<div class="col">
+							Temperature <span class="temp_uom"></span>
+						</div>
+						<div class="col-7">
+							<span id="preview_temperature1" data-temperature></span>
+						</div>
+					</div>
+					<div class="row rounded-lg bg-light mt-1">
+						<div class="col">Pressure mb</div>
+						<div class="col-7">
+							<span id="preview_pres1"></span>
+						</div>
+					</div>
+					<div class="row rounded-lg bg-light mt-1 mb-3">
+						<div class="col">
+							Wind Speed <span class="windspeed_uom"></span>
+						</div>
+						<div class="col-7">
+							<span id="preview_wind_speed1" data-windspeed></span>
+						</div>
+					</div>
+					<button type="button" class="btn btn-secondary"
+						onclick="$AjaxHandler.cityDetails.ajax(WEATHERDETAILSBASEURL + $previewIds[1]);"
+					>Details »</button>
+				</div>
+			</div>
+
+
+			<div class="col-4">
+				<div id="preview_spinner2" class="text-center pt-0 pb-0" style="height: 4rem;">
+					<div class="spinner-border text-success"
+						style="display: inline-block; width: 2rem; height: 2rem; margin-top: 1rem" role="status"
+					>
+						<span class="sr-only">Loading...</span>
+					</div>
+				</div>
+				<div id="preview2" class="container" style="display: none">
+					<div class="row">
+						<img id="preview_icon2" src="#" width="50" height="50"
+							onerror="this.onerror=null; this.src='#';" class="float-left mt-0 ml-0"
+						>
+						<h2 id="preview_citycountry2"></h2>
+					</div>
+					<div class="row rounded-lg bg-light">
+						<div class="col">
+							Temperature <span class="temp_uom"></span>
+						</div>
+						<div class="col-7">
+							<span id="preview_temperature2" data-temperature></span>
+						</div>
+					</div>
+					<div class="row rounded-lg bg-light mt-1">
+						<div class="col">Pressure mb</div>
+						<div class="col-7">
+							<span id="preview_pres2"></span>
+						</div>
+					</div>
+					<div class="row rounded-lg bg-light mt-1 mb-3">
+						<div class="col">
+							Wind Speed <span class="windspeed_uom"></span>
+						</div>
+						<div class="col-7">
+							<span id="preview_wind_speed2" data-windspeed></span>
+						</div>
+					</div>
+					<button type="button" class="btn btn-secondary"
+						onclick="$AjaxHandler.cityDetails.ajax(WEATHERDETAILSBASEURL + $previewIds[2]);"
+					>Details »</button>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div id="preview_spinner3" class="text-center pt-0 pb-0" style="height: 4rem;">
+					<div class="spinner-border text-success"
+						style="display: inline-block; width: 2rem; height: 2rem; margin-top: 1rem" role="status"
+					>
+						<span class="sr-only">Loading...</span>
+					</div>
+				</div>
+				<div id="preview3" class="container" style="display: none">
+					<div class="row">
+						<img id="preview_icon3" src="#" width="50" height="50"
+							onerror="this.onerror=null; this.src='#';" class="float-left mt-0 ml-0"
+						>
+						<h2 id="preview_citycountry3"></h2>
+					</div>
+					<div class="row rounded-lg bg-light">
+						<div class="col">
+							Temperature <span class="temp_uom"></span>
+						</div>
+						<div class="col-7">
+							<span id="preview_temperature3" data-temperature></span>
+						</div>
+					</div>
+					<div class="row rounded-lg bg-light mt-1">
+						<div class="col">Pressure mb</div>
+						<div class="col-7">
+							<span id="preview_pres3"></span>
+						</div>
+					</div>
+					<div class="row rounded-lg bg-light mt-1 mb-3">
+						<div class="col">
+							Wind Speed <span class="windspeed_uom"></span>
+						</div>
+						<div class="col-7">
+							<span id="preview_wind_speed3" data-windspeed></span>
+						</div>
+					</div>
+					<button type="button" class="btn btn-secondary"
+						onclick="$AjaxHandler.cityDetails.ajax(WEATHERDETAILSBASEURL + $previewIds[3]);"
+					>Details »</button>
+				</div>
+
+			</div>
+		</div>
+
+		<hr>
+
+	</div>
+	<!-- /container --> </main>
+
+
+
+	<footer class="container">
+		<p>© 2019 IOTU NICOLAE, nicolae.g.iotu@gmail.com</p>
+	</footer>
+	<script src="./js/jquery-3.4.1.min.js"></script>
+	<script src="./js/bootstrap.bundle.min.js"></script>
+	<script src="./js/bootstrap-select.min.js"></script>
+	<script src="./js/ajax-bootstrap-select.min.js"></script>
+	<script src="./js/bootstrap2-toggle.min.js"></script>
+	<script src="./js/searchcity.js"></script>
+	<script src="./js/citydetails.js"></script>
+	<script src="./js/citypreview.js"></script>
+	<script src="./js/weatherapp.js"></script>
+
+</body>
+</html>

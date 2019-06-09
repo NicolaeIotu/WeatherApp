@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tree>
+  <directory name=".">
+    <file name="HELP.md"></file>
+    <file name="LICENSE"></file>
+    <file name="mvnw"></file>
+    <file name="mvnw.cmd"></file>
+    <file name="pom.xml"></file>
+    <file name="ProjectBrief.md"></file>
+    <file name="ProjectBrief.odt"></file>
+    <file name="README.md"></file>
+    <directory name="src">
+      <directory name="main">
+        <directory name="java">
+          <directory name="com">
+            <directory name="fasttrackit">
+              <directory name="weatherapp">
+                <directory name="configuration">
+                  <file name="SwaggerConfig.java"></file>
+                </directory>
+                <directory name="domain">
+                  <directory name="city">
+                    <file name="CityId.java"></file>
+                    <file name="City.java"></file>
+                  </directory>
+                  <directory name="currentweather">
+                    <file name="CurrentWeather.java"></file>
+                  </directory>
+                </directory>
+                <directory name="persistence">
+                  <file name="CityRepository.java"></file>
+                  <file name="CurrentWeatherRepository.java"></file>
+                </directory>
+                <directory name="service">
+                  <file name="CityService.java"></file>
+                  <file name="CurrentWeatherService.java"></file>
+                </directory>
+                <file name="ServletInitializer.java"></file>
+                <directory name="tools">
+                  <file name="CitiesParser.java"></file>
+                  <file name="CurrentWeatherTools.java"></file>
+                </directory>
+                <directory name="transfer">
+                  <directory name="city">
+                    <file name="CityListReponse.java"></file>
+                    <file name="CreateCityRequest.java"></file>
+                    <file name="GetFilteredCitiesRequest.java"></file>
+                    <file name="UpdateCityRequest.java"></file>
+                  </directory>
+                  <directory name="currentweather">
+                    <file name="CreateCurrentWeatherRequest.java"></file>
+                    <file name="CurrentWeatherListResponse.java"></file>
+                    <file name="CurrentWeatherResponse.java"></file>
+                    <file name="DeleteCurrentWeatherRequest.java"></file>
+                    <file name="UpdateCurrentWeatherRequest.java"></file>
+                  </directory>
+                </directory>
+                <file name="WeatherAppApplication.java"></file>
+                <directory name="weatherprovider">
+                  <file name="OpenWeatherMapWeatherProvider.java"></file>
+                  <file name="WeatherProvider.java"></file>
+                </directory>
+                <directory name="web">
+                  <file name="CityController.java"></file>
+                  <file name="CurrentWeatherController.java"></file>
+                </directory>
+              </directory>
+            </directory>
+          </directory>
+        </directory>
+        <directory name="resources">
+          <file name="application.properties"></file>
+          <directory name="openweathermap">
+            <file name="current.city.list.json"></file>
+            <file name="current.city.list.json.head20000"></file>
+          </directory>
+          <directory name="static">
+          </directory>
+          <directory name="templates">
+          </directory>
+        </directory>
+        <directory name="webapp">
+          <directory name="css">
+            <file name="ajax-bootstrap-select.min.css"></file>
+            <file name="all.min.css"></file>
+            <file name="bootstrap2-toggle.min.css"></file>
+            <file name="bootstrap.min.css"></file>
+            <file name="bootstrap-select.min.css"></file>
+            <file name="file-explore.css"></file>
+            <file name="fontawesome.min.css"></file>
+            <file name="weatherapp.css"></file>
+          </directory>
+          <directory name="img">
+            <file name="ic_error_18px.svg"></file>
+            <file name="ic_folder_24px.svg"></file>
+            <file name="ic_folder_open_24px.svg"></file>
+            <file name="ic_insert_drive_file_24px.svg"></file>
+            <file name="ic_refresh_24px.svg"></file>
+            <file name="live_weather_75.png"></file>
+            <directory name="logos">
+              <file name="bootstrap.png"></file>
+              <file name="java.png"></file>
+              <file name="jquery.png"></file>
+              <file name="maven.jpg"></file>
+              <file name="mysql.png"></file>
+              <file name="springboot.png"></file>
+              <file name="tomcat.png"></file>
+            </directory>
+            <file name="search_cities_75.png"></file>
+            <directory name="weather">
+              <file name="01d.png"></file>
+              <file name="01n.png"></file>
+              <file name="02d.png"></file>
+              <file name="02n.png"></file>
+              <file name="03d.png"></file>
+              <file name="03n.png"></file>
+              <file name="04d.png"></file>
+              <file name="04n.png"></file>
+              <file name="09d.png"></file>
+              <file name="09n.png"></file>
+              <file name="10d.png"></file>
+              <file name="10n.png"></file>
+              <file name="11d.png"></file>
+              <file name="11n.png"></file>
+              <file name="13d.png"></file>
+              <file name="13n.png"></file>
+              <file name="50d.png"></file>
+              <file name="50n.png"></file>
+            </directory>
+          </directory>
+          <file name="index.html"></file>
+          <directory name="js">
+            <file name="ajax-bootstrap-select.min.js"></file>
+            <file name="all.min.js"></file>
+            <file name="bootstrap2-toggle.min.js"></file>
+            <file name="bootstrap.bundle.min.js"></file>
+            <file name="bootstrap-select.min.js"></file>
+            <file name="citydetails.js"></file>
+            <file name="citypreview.js"></file>
+            <file name="file-explore.js"></file>
+            <file name="jquery-3.4.1.min.js"></file>
+            <file name="searchcity.js"></file>
+            <file name="weatherapp.js"></file>
+          </directory>
+          <file name="legal.html"></file>
+          <file name="licence.html"></file>
+          <file name="technical-details.html"></file>
+          <directory name="webfonts">
+            <file name="fa-regular-400.ttf"></file>
+            <file name="fa-regular-400.woff"></file>
+            <file name="fa-regular-400.woff2"></file>
+          </directory>
+        </directory>
+      </directory>
+      <directory name="test">
+        <directory name="java">
+          <directory name="com">
+            <directory name="fasttrackit">
+              <directory name="weatherapp">
+                <file name="CityRelatedTests.java"></file>
+                <file name="CurrentWeatherRelatedTests.java"></file>
+              </directory>
+            </directory>
+          </directory>
+        </directory>
+      </directory>
+    </directory>
+    <directory name="target">
+      <directory name="classes">
+        <file name="application.properties"></file>
+        <directory name="com">
+          <directory name="fasttrackit">
+            <directory name="weatherapp">
+              <directory name="configuration">
+                <file name="SwaggerConfig.class"></file>
+              </directory>
+              <directory name="domain">
+                <directory name="city">
+                  <file name="City.class"></file>
+                  <file name="CityId.class"></file>
+                </directory>
+                <directory name="currentweather">
+                  <file name="CurrentWeather.class"></file>
+                </directory>
+              </directory>
+              <directory name="persistence">
+                <file name="CityRepository.class"></file>
+                <file name="CurrentWeatherRepository.class"></file>
+              </directory>
+              <directory name="service">
+                <file name="CityService.class"></file>
+                <file name="CurrentWeatherService.class"></file>
+              </directory>
+              <file name="ServletInitializer.class"></file>
+              <directory name="tools">
+                <file name="CitiesParser.class"></file>
+                <file name="CurrentWeatherTools.class"></file>
+              </directory>
+              <directory name="transfer">
+                <directory name="city">
+                  <file name="CityListReponse.class"></file>
+                  <file name="CreateCityRequest.class"></file>
+                  <file name="GetFilteredCitiesRequest.class"></file>
+                  <file name="UpdateCityRequest.class"></file>
+                </directory>
+                <directory name="currentweather">
+                  <file name="CreateCurrentWeatherRequest.class"></file>
+                  <file name="CurrentWeatherListResponse.class"></file>
+                  <file name="CurrentWeatherResponse.class"></file>
+                  <file name="DeleteCurrentWeatherRequest.class"></file>
+                  <file name="UpdateCurrentWeatherRequest.class"></file>
+                </directory>
+              </directory>
+              <file name="WeatherAppApplication.class"></file>
+              <directory name="weatherprovider">
+                <file name="OpenWeatherMapWeatherProvider$1.class"></file>
+                <file name="OpenWeatherMapWeatherProvider.class"></file>
+                <file name="WeatherProvider.class"></file>
+              </directory>
+              <directory name="web">
+                <file name="CityController.class"></file>
+                <file name="CurrentWeatherController.class"></file>
+              </directory>
+            </directory>
+          </directory>
+        </directory>
+        <directory name="openweathermap">
+          <file name="current.city.list.json"></file>
+          <file name="current.city.list.json.head20000"></file>
+        </directory>
+      </directory>
+      <directory name="m2e-wtp">
+        <directory name="web-resources">
+          <directory name="META-INF">
+            <file name="MANIFEST.MF"></file>
+            <directory name="maven">
+              <directory name="com.fasttrackit">
+                <directory name="WeatherApp">
+                  <file name="pom.properties"></file>
+                  <file name="pom.xml"></file>
+                </directory>
+              </directory>
+            </directory>
+          </directory>
+        </directory>
+      </directory>
+      <directory name="test-classes">
+        <directory name="com">
+          <directory name="fasttrackit">
+            <directory name="weatherapp">
+              <file name="CityRelatedTests.class"></file>
+              <file name="CurrentWeatherRelatedTests.class"></file>
+            </directory>
+          </directory>
+        </directory>
+      </directory>
+    </directory>
+    <file name="tree.xml"></file>
+  </directory>
+  <report>
+    <directories>62</directories>
+    <files>131</files>
+  </report>
+</tree>

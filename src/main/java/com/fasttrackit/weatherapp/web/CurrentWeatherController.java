@@ -19,8 +19,13 @@ import com.fasttrackit.weatherapp.domain.currentweather.CurrentWeather;
 import com.fasttrackit.weatherapp.service.CurrentWeatherService;
 import com.fasttrackit.weatherapp.transfer.currentweather.UpdateCurrentWeatherRequest;
 
+/**
+ * 
+ * @author Nicolae Iotu, nicolae.g.iotu@gmail.com
+ *
+ */
 @RestController
-@RequestMapping(value = "/current-weather")
+@RequestMapping(value = "/weather")
 public class CurrentWeatherController {
 
 	private final CurrentWeatherService currentWeatherService;
@@ -33,7 +38,8 @@ public class CurrentWeatherController {
 	///////////// READ //////////////////
 	// by id
 	@GetMapping("/{id}")
-	public ResponseEntity<CurrentWeather> getCurrentWeather(@PathVariable("id") long id) throws NoSuchMethodException, SecurityException, IOException {
+	public ResponseEntity<CurrentWeather> getCurrentWeather(@PathVariable("id") long id)
+			throws NoSuchMethodException, SecurityException, IOException {
 		CurrentWeather response = currentWeatherService.getCurrentWeatherById(id);
 		return new ResponseEntity<>(response, HttpStatus.OK);
 	}

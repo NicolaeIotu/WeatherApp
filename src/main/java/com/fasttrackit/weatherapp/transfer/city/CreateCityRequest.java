@@ -1,5 +1,10 @@
 package com.fasttrackit.weatherapp.transfer.city;
 
+/**
+ * 
+ * @author Nicolae Iotu, nicolae.g.iotu@gmail.com
+ *
+ */
 public class CreateCityRequest {
 	
 	private long wwwapiid;

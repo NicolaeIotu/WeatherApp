@@ -22,11 +22,10 @@ public class WeatherProvider {
 	private String query = "";
 	private String callUri;
 
-	
 	public WeatherProvider() {
 
 	}
-	
+
 	public WeatherProvider(String name, String url, String endpoint,
 			Map<String, String> queryComponents) {
 		setupProperties(name, url, endpoint, queryComponents);
@@ -42,6 +41,10 @@ public class WeatherProvider {
 
 	public String getCallUri() {
 		return this.callUri;
+	}
+
+	public Map<String, String> getQueryComponents() {
+		return queryComponents;
 	}
 
 	public WeatherProvider setQueryComponents(Map<String, String> queryComponents) {
@@ -74,7 +77,7 @@ public class WeatherProvider {
 		for (String key : queryComponents.keySet()) {
 			value = queryComponents.get(key);
 			if (value.length() != 0) {
-				if(query.length() != 0) {
+				if (query.length() != 0) {
 					this.query += "&";
 				}
 				this.query += key + "=" + value;

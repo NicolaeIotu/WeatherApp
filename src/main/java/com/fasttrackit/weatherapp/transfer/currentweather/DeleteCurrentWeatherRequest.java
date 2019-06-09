@@ -1,10 +1,15 @@
 package com.fasttrackit.weatherapp.transfer.currentweather;
 
+/**
+ * 
+ * @author Nicolae Iotu, nicolae.g.iotu@gmail.com
+ *
+ */
 public class DeleteCurrentWeatherRequest {
 	private long wwwapiid;
-	
+
 	public DeleteCurrentWeatherRequest() {
-		
+
 	}
 
 	public long getWwwapiid() {
@@ -19,6 +24,5 @@ public class DeleteCurrentWeatherRequest {
 	public String toString() {
 		return "DeleteCurrentWeatherRequest [wwwapiid=" + wwwapiid + "]";
 	}
-	
-	
+
 }
